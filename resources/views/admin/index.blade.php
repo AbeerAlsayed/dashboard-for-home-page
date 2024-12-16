@@ -1,12 +1,12 @@
 @extends('admin.master')
-@section('title','Index')
+@section('title',__('keywords.index'))
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="row align-items-center mb-2">
                     <div class="col">
-                        <h2 class="h5 page-title">Welcome!</h2>
+                        <h2 class="h5 page-title">{{__('keywords.welcome')}}!</h2>
                     </div>
                     <div class="col-auto">
                         <form class="form-inline">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,15 @@ Route::name('front.')->group( function () {
     Route::view('/contact','front.contact')->name('contact');
 });
 
-Route::name('admin.')->prefix('admin')->group( function () {
+Route::name('admin.')->prefix(LaravelLocalization::setLocale().'/admin')
+    ->middleware( [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
+    ->group( function () {
+
     Route::middleware('auth')->group(function (){
         Route::view('/','admin.index')->name('index');
     });
     require __DIR__.'/auth.php';
+
 });
 
 //Route::get('/dashboard', function () {
