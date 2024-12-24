@@ -31,6 +31,13 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
     }
+    public function attributes()
+    {
+        return [
+            'email' =>__('keywords.email'),
+            'password' => __('keywords.password'),
+        ];
+    }
 
     /**
      * Attempt to authenticate the request's credentials.

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -14,7 +15,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/**
+ * front route
+ */
 Route::name('front.')->group( function () {
     Route::view('/','front.index')->name('index');
     Route::view('/about','front.about')->name('about');
@@ -22,24 +25,24 @@ Route::name('front.')->group( function () {
     Route::view('/contact','front.contact')->name('contact');
 });
 
+/**
+ * admin route
+ */
 Route::name('admin.')->prefix(LaravelLocalization::setLocale().'/admin')
     ->middleware( [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath'])
     ->group( function () {
+        Route::middleware('auth')->group(function (){
+            ################################### Home Page
+            Route::view('/','admin.index')->name('index');
 
-    Route::middleware('auth')->group(function (){
-        Route::view('/','admin.index')->name('index');
-    });
+            ################################### Services Pages
+            Route::controller(ServiceController::class)->group(function () {
+                Route::resource('services', ServiceController::class);
+            });
+        });
     require __DIR__.'/auth.php';
 
 });
 
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-//
-//Route::middleware('auth')->group(function () {
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-//});
+
 

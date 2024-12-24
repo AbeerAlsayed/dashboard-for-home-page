@@ -40,7 +40,7 @@
                 <a class="dropdown-item" href="#">Activities</a>
                 <form action="{{route('admin.logout')}}" method="post">
                     @csrf
-                    <button type="submit" class="dropdown-item text-danger">Logout</button>
+                    <button type="submit" class="dropdown-item text-danger">{{__('keywords.logout')}}</button>
                 </form>
             </div>
         </li>
