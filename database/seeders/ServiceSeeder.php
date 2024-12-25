@@ -16,8 +16,12 @@ class ServiceSeeder extends Seeder
         Service::create([
            'title'=>'Business Research',
            'description'=>'Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.',
-            'icon'=>'fa fa-user-tie'
-
+            'icon'=>'fe fe-edit'
+        ]);
+        Service::create([
+            'title'=>'Business2 Research',
+            'description'=>'Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.',
+            'icon'=>'fe fe-eye'
         ]);
     }
 }

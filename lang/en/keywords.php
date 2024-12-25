@@ -22,4 +22,5 @@ return[
     'icon'=> 'Icon',
     'actions'=> 'Actions',
     'no_record_found'=> 'No Record Found',
+    'add_new'=>'Add New',
 ];
