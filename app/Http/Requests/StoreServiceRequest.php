@@ -22,7 +22,18 @@ class StoreServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'=> 'required|string',
+            'icon'=> 'required|string',
+            'description'=> 'required|string',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'title'=> __('keywords.title'),
+            'icon'=> __('keywords.icon'),
+            'description'=> __('keywords.description'),
         ];
     }
 }

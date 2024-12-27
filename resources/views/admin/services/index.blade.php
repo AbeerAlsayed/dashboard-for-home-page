@@ -7,7 +7,7 @@
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between mb-3">
                     <h2 class="h5 page-title">{{__('keywords.services')}}</h2>
                     <div class="page-title-right">
-                        <a class="btn btn-sm btn-primary text-white">
+                        <a href="{{route('admin.services.create')}}" class="btn btn-sm btn-primary text-white">
                             {{__('keywords.add_new')}}
                         </a>
                     </div>
@@ -17,6 +17,9 @@
 
                 <div class="card shadow">
                     <div class="card-body">
+                        @if(session('success'))
+                            <div class="alert-success">{{session('success')}}</div>
+                        @endif
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -28,24 +31,28 @@
                             </thead>
                             <tbody>
                             @if($services->isNotEmpty())
-                                @php $i = ($services->currentPage() - 1) * $services->perPage(); @endphp
+                                @php $i = ($services->currentPage()) * $services->perPage(); @endphp
                                 @foreach($services as $service)
                                     <tr>
-                                        <td>{{ ++$i }}</td>
+                                        <td>{{ $i }}</td>
                                         <td>{{$service->title}}</td>
                                         <td>
                                             <i class="{{$service->icon}} fa-2x"></i>
                                         </td>
                                         <td>
-                                            <a class="btn btn-sm btn-success text-white">
+                                            <a href="{{route('admin.services.edit',['service'=>$service])}}" class="btn btn-sm btn-success text-white">
                                                 <i class="fe fe-edit fa-2x"></i>
                                             </a>
-                                            <a class="btn btn-sm btn-primary text-white">
-                                                <i class="fe fe-edit fa-2x"></i>
+                                            <a href="{{route('admin.services.show',['service'=>$service])}}" class="btn btn-sm btn-primary text-white">
+                                                <i class="fe fe-eye fa-2x"></i>
                                             </a>
-                                            <a class="btn btn-sm btn-danger text-white">
-                                                <i class="fe fe-trash-2 fa-2x"></i>
-                                            </a>
+                                            <form action="{{route('admin.services.destroy',['service'=>$service])}}" class="d-inline" method="post" id="deleteForm-{{$service->id}}">
+                                                @csrf
+                                                @method('Delete')
+                                                <button type="button" class="btn btn-sm btn-danger text-white" onclick="confirmDelete({{$service->id}})">
+                                                    <i class="fe fe-trash-2 fa-2x"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,4 +76,9 @@
             </div>
         </div>
     </div>
+    <script>
+        function confirmDelete(id){
+        alert('hi');
+        }
+    </script>
 @endsection

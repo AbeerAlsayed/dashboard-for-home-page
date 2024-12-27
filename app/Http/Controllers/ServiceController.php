@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
+use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
@@ -13,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services=Service::paginate(1);
+        $services=Service::paginate(10);
         return view('admin.services.index',get_defined_vars());
     }
 
@@ -22,7 +23,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.services.create',get_defined_vars());
     }
 
     /**
@@ -30,7 +31,9 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        //
+        $data=$request->validated();
+        Service::create($data);
+        return to_route('admin.services.index')->with(__('success','keywords.created_services'));
     }
 
     /**
@@ -38,7 +41,7 @@ class ServiceController extends Controller
      */
     public function show(Service $service)
     {
-        //
+        return view('admin.services.show',get_defined_vars());
     }
 
     /**
@@ -46,7 +49,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('admin.services.edit',get_defined_vars());
     }
 
     /**
@@ -54,7 +57,9 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        //
+        $data=$request->validated();
+        $service->update($data);
+        return to_route('admin.services.index')->with('success', __('keywords.updated_services'));
     }
 
     /**
