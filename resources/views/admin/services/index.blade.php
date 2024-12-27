@@ -18,7 +18,9 @@
                 <div class="card shadow">
                     <div class="card-body">
                         @if(session('success'))
-                            <div class="alert-success">{{session('success')}}</div>
+                            <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
+                                {{ session('success') }}
+                            </div>
                         @endif
                         <table class="table table-hover">
                             <thead>
@@ -29,12 +31,13 @@
                                 <th width="15%">{{__('keywords.actions')}}</th>
                             </tr>
                             </thead>
+
                             <tbody>
                             @if($services->isNotEmpty())
-                                @php $i = ($services->currentPage()) * $services->perPage(); @endphp
+                                @php $i = $services->firstItem(); @endphp
                                 @foreach($services as $service)
                                     <tr>
-                                        <td>{{ $i }}</td>
+                                        <td>{{ $i++ }}</td>
                                         <td>{{$service->title}}</td>
                                         <td>
                                             <i class="{{$service->icon}} fa-2x"></i>
@@ -78,7 +81,10 @@
     </div>
     <script>
         function confirmDelete(id){
-        alert('hi');
+
+          if(confirm('Are you sure you want to delete this record ?')){
+                document.getElementById('deleteForm-'+id).submit();
+            }
         }
     </script>
 @endsection

@@ -30,4 +30,5 @@ return[
     'show_service'=>'Show service',
     'edit_service'=>'Edit service',
     'updated_services'=>'The record is update successfully',
+    'deleted_services'=>'The record is delete successfully',
 ];
