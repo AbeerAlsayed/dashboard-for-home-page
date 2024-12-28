@@ -33,7 +33,7 @@ class ServiceController extends Controller
     {
         $data=$request->validated();
         Service::create($data);
-        return to_route('admin.services.index')->with('success', __('keywords.created_services'));
+        return to_route('admin.services.index')->with('success', __('keywords.created_successfully'));
     }
 
     /**
@@ -59,7 +59,7 @@ class ServiceController extends Controller
     {
         $data=$request->validated();
         $service->update($data);
-        return to_route('admin.services.index')->with('success', __('keywords.updated_services'));
+        return to_route('admin.services.index')->with('success', __('keywords.updated_successfully'));
     }
 
     /**
@@ -68,6 +68,6 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
-        return to_route('admin.services.index')->with('success', __('keywords.deleted_services'));
+        return to_route('admin.services.index')->with('success', __('keywords.deleted_successfully'));
     }
 }
