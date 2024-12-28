@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CompanyController extends Controller
 {
@@ -31,7 +32,13 @@ class CompanyController extends Controller
     public function store(StoreCompanyRequest $request)
     {
           $data=$request->validated();
-          Company::create($data);
+
+        $image=$request->image;
+        $newImageName=time().'-'.$image->getClientOriginalName();
+        $image->storeAs('companies',$newImageName,'public');
+        $data['image']=$newImageName;
+
+        Company::create($data);
           return to_route('admin.companies.index')->with('success', __('keywords.created_successfully'));
     }
 
@@ -57,6 +64,16 @@ class CompanyController extends Controller
     public function update(UpdateCompanyRequest $request, Company $company)
     {
         $data=$request->validated();
+
+        if ($request->hasFile('image')){
+            Storage::delete("public/companies/$company->image");
+
+            $image=$request->image;
+            $newImageName=time().'-'.$image->getClientOriginalName();
+            $image->storeAs('companies',$newImageName,'public');
+            $data['image']=$newImageName;
+        }
+
         $company->update($data);
         return to_route('admin.companies.index')->with('success', __('keywords.updated_successfully'));
     }
@@ -66,7 +83,9 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-         $company->delete();
+        Storage::delete("public/companies/$company->image");
+
+        $company->delete();
          return to_route('admin.companies.index')->with('success', __('keywords.deleted_successfully'));
     }
 }

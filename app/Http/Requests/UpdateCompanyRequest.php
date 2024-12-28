@@ -22,14 +22,13 @@ class UpdateCompanyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'title'=> 'required|string',
+            'image'=> 'nullable',
         ];
     }
       public function attributes(): array
         {
             return [
-                //'title'=> __('keywords.title'),
-
+                'image'=> __('keywords.image'),
             ];
         }
 }

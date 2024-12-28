@@ -23,12 +23,15 @@ class StoreCompanyRequest extends FormRequest
     {
         return [
             // 'title'=> 'required|string',
+            'image'=> 'required',
+
         ];
     }
       public function attributes(): array
         {
             return [
                 //'title'=> __('keywords.title'),
+                'image'=> __('keywords.image'),
 
             ];
         }

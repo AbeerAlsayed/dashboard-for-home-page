@@ -27,7 +27,6 @@
                                    <x-form-lable name="image"></x-form-lable>
                                    <input type="file" class="form-control-file" name="image">
                                    <x-validation-error name="image"></x-validation-error>
-
                                </div>
                                <div class="col-md-12 mt-2">
                                    <x-form-lable name="description"></x-form-lable>
