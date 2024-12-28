@@ -72,4 +72,12 @@ return[
     'add_new_company'=>'Add New Company',
     'show_company'=>'Show Company',
     'edit_company'=>'Edit Company',
+
+    //settings module
+    'settings'=> 'Settings',
+    'address'=> 'Address',
+    'youtube'=> 'Youtube',
+    'phone'=> 'Phone',
+    'instagram'=> 'Instagram',
+
 ];

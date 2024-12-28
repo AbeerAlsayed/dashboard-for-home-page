@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use App\Http\Requests\StoreMemberRequest;
 use App\Http\Requests\UpdateMemberRequest;
+use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
 {
@@ -31,7 +32,13 @@ class MemberController extends Controller
     public function store(StoreMemberRequest $request)
     {
           $data=$request->validated();
-          Member::create($data);
+
+        $image=$request->image;
+        $newImageName=time().'-'.$image->getClientOriginalName();
+        $image->storeAs('members',$newImageName,'public');
+        $data['image']=$newImageName;
+
+        Member::create($data);
           return to_route('admin.members.index')->with('success', __('keywords.created_successfully'));
     }
 
@@ -57,6 +64,14 @@ class MemberController extends Controller
     public function update(UpdateMemberRequest $request, Member $member)
     {
         $data=$request->validated();
+        if ($request->hasFile('image')){
+            Storage::delete("public/members/$member->image");
+
+            $image=$request->image;
+            $newImageName=time().'-'.$image->getClientOriginalName();
+            $image->storeAs('members',$newImageName,'public');
+            $data['image']=$newImageName;
+        }
         $member->update($data);
         return to_route('admin.members.index')->with('success', __('keywords.updated_successfully'));
     }
@@ -66,7 +81,8 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-         $member->delete();
+        Storage::delete("public/members/$member->image");
+        $member->delete();
          return to_route('admin.members.index')->with('success', __('keywords.deleted_successfully'));
     }
 }

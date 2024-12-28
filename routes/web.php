@@ -6,6 +6,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
@@ -74,6 +75,11 @@ Route::name('admin.')->prefix(LaravelLocalization::setLocale().'/admin')
             ################################### companies Pages
             Route::controller(CompanyController::class)->group(function () {
                 Route::resource('companies', CompanyController::class);
+            });
+
+            ################################### Setting Pages
+            Route::controller(SettingController::class)->group(function () {
+                Route::resource('settings', SettingController::class)->only(['index','update']);
             });
         });
     require __DIR__.'/auth.php';

@@ -48,6 +48,9 @@
 
             {{--Company--}}
             <x-side-tab href="{{route('admin.companies.index')}}" icon="fe-briefcase" name="{{__('keywords.companies')}}" ></x-side-tab>
+
+            {{--Setting--}}
+            <x-side-tab href="{{route('admin.settings.index')}}" icon="fe-settings" name="{{__('keywords.settings')}}" ></x-side-tab>
         </ul>
 
 
