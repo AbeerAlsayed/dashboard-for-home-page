@@ -34,6 +34,9 @@
             {{--Features--}}
             <x-side-tab href="{{route('admin.features.index')}}" icon="fe-bookmark" name="{{__('keywords.features')}}" ></x-side-tab>
 
+            {{--Messages--}}
+            <x-side-tab href="{{route('admin.messages.index')}}" icon="fe-message-square" name="{{__('keywords.messages')}}" ></x-side-tab>
+
         </ul>
 
 

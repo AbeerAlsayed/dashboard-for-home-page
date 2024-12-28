@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ServiceSeeder::class,
             FeatureSeeder::class,
+            MessageSeeder::class,
         ]);
     }
 }

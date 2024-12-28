@@ -39,4 +39,12 @@ return[
     'add_new_feature'=>'Add New Feature',
     'show_feature'=>'Show Feature',
     'edit_feature'=>'Edit Feature',
+
+    //Messages module
+    'messages'=> 'Messages',
+    'show_message'=>'Show Message',
+    'name'=> 'Name',
+    'subject'=> 'Subject',
+    'message'=> 'Message',
+
 ];
