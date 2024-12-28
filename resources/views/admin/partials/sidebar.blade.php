@@ -38,8 +38,16 @@
             <x-side-tab href="{{route('admin.messages.index')}}" icon="fe-message-square" name="{{__('keywords.messages')}}" ></x-side-tab>
 
             {{--Subscriber--}}
-            <x-side-tab href="{{route('admin.subscribers.index')}}" icon="fe-users" name="{{__('keywords.subscribers')}}" ></x-side-tab>
+            <x-side-tab href="{{route('admin.subscribers.index')}}" icon="fe-bell" name="{{__('keywords.subscribers')}}" ></x-side-tab>
 
+            {{--Testimonial--}}
+            <x-side-tab href="{{route('admin.testimonials.index')}}" icon="fe-message-circle" name="{{__('keywords.testimonials')}}" ></x-side-tab>
+
+            {{--Member--}}
+            <x-side-tab href="{{route('admin.members.index')}}" icon="fe-users" name="{{__('keywords.members')}}" ></x-side-tab>
+
+            {{--Company--}}
+            <x-side-tab href="{{route('admin.companies.index')}}" icon="fe-briefcase" name="{{__('keywords.companies')}}" ></x-side-tab>
         </ul>
 
 

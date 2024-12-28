@@ -49,4 +49,27 @@ return[
 
     //Subscriber module
     'subscribers'=> 'Subscribers',
+
+    //testimonial module
+    'testimonials'=> 'Testimonials',
+    'position'=> 'Position',
+    'image'=> 'Image',
+    'add_new_testimonial'=>'Add New Testimonial',
+    'show_testimonial'=>'Show Testimonial',
+    'edit_testimonial'=>'Edit Testimonial',
+
+    //members module
+    'members'=> 'Members',
+    'facebook'=> 'Facebook',
+    'twitter'=> 'Twitter',
+    'linkedin'=> 'Linkedin',
+    'add_new_member'=>'Add New Member',
+    'show_member'=>'Show Member',
+    'edit_member'=>'Edit Member',
+
+    //companies module
+    'companies'=> 'Companies',
+    'add_new_company'=>'Add New Company',
+    'show_company'=>'Show Company',
+    'edit_company'=>'Edit Company',
 ];

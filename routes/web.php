@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -56,6 +59,21 @@ Route::name('admin.')->prefix(LaravelLocalization::setLocale().'/admin')
             ################################### Subscriber Pages
             Route::controller(SubscriberController::class)->group(function () {
                 Route::resource('subscribers', SubscriberController::class)->only(['index','destroy']);
+            });
+
+            ################################### testimonial Pages
+            Route::controller(TestimonialController::class)->group(function () {
+                Route::resource('testimonials', TestimonialController::class);
+            });
+
+            ################################### members Pages
+            Route::controller(MemberController::class)->group(function () {
+                Route::resource('members', MemberController::class);
+            });
+
+            ################################### companies Pages
+            Route::controller(CompanyController::class)->group(function () {
+                Route::resource('companies', CompanyController::class);
             });
         });
     require __DIR__.'/auth.php';
