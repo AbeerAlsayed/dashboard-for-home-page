@@ -47,4 +47,6 @@ return[
     'subject'=> 'Subject',
     'message'=> 'Message',
 
+    //Subscriber module
+    'subscribers'=> 'Subscribers',
 ];

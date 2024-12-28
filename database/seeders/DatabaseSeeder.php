@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             FeatureSeeder::class,
             MessageSeeder::class,
+            SubscriberSeeder::class,
         ]);
     }
 }

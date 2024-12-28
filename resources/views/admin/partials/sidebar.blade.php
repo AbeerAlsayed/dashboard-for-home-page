@@ -37,6 +37,9 @@
             {{--Messages--}}
             <x-side-tab href="{{route('admin.messages.index')}}" icon="fe-message-square" name="{{__('keywords.messages')}}" ></x-side-tab>
 
+            {{--Subscriber--}}
+            <x-side-tab href="{{route('admin.subscribers.index')}}" icon="fe-users" name="{{__('keywords.subscribers')}}" ></x-side-tab>
+
         </ul>
 
 
