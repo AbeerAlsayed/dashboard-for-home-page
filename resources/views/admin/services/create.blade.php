@@ -13,28 +13,24 @@
                            @csrf
                            <div class="row">
                                <div class="col-md-6">
-                                       <label for="title">{{__('keywords.title')}}</label>
+                                   <x-form-lable name="title"></x-form-lable>
                                        <input type="text" class="form-control" name="title" placeholder="{{__('keywords.title')}}">
-                                   @error('title')
-                                        <span class="alert-danger">{{$message}}</span>
-                                   @enderror
+                               <x-validation-error name="title"></x-validation-error>
                                </div>
                                <div class="col-md-6">
-                                       <label for="icon">{{__('keywords.icon')}}</label>
+                                   <x-form-lable name="icon"></x-form-lable>
                                        <input type="text" class="form-control" name="icon" placeholder="{{__('keywords.icon')}}">
-                                   @error('icon')
-                                        <span class="alert-danger">{{$message}}</span>
-                                   @enderror
+                                   <x-validation-error name="icon"></x-validation-error>
+
                                </div>
                                <div class="col-md-12 mt-2">
-                                       <label for="description">{{__('keywords.description')}}</label>
+                                   <x-form-lable name="description"></x-form-lable>
                                        <textarea class="form-control" rows="4" name="description" placeholder="{{__('keywords.description')}}"></textarea>
-                                   @error('description')
-                                        <span class="alert-danger">{{$message}}</span>
-                                   @enderror
+                                   <x-validation-error name="description"></x-validation-error>
+
                                </div>
                            </div>
-                           <button type="submit" class="btn btn-primary btn-sm mt-3" >{{__('keywords.submit')}}</button>
+                           <x-submit-button></x-submit-button>
                        </form>
                     </div>
                 </div>

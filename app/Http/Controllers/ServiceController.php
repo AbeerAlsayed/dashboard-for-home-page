@@ -14,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services=Service::paginate(2);
+        $services=Service::paginate(config('pagination.count'));
         return view('admin.services.index',get_defined_vars());
     }
 
@@ -33,7 +33,7 @@ class ServiceController extends Controller
     {
         $data=$request->validated();
         Service::create($data);
-        return to_route('admin.services.index')->with(__('success','keywords.created_services'));
+        return to_route('admin.services.index')->with('success', __('keywords.created_services'));
     }
 
     /**
